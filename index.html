@@ -276,11 +276,50 @@
       border-top: 1px solid var(--gray-200);
     }
 
+    /* ───── SCREENSHOT PAIR (desktop + mobile) ───── */
+    .screenshot-pair {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      margin: 1rem 0;
+    }
+    .screenshot-pair .ss-desktop {
+      flex: 3;
+      min-width: 0;
+    }
+    .screenshot-pair .ss-mobile {
+      flex: 1;
+      min-width: 0;
+      max-width: 220px;
+    }
+    .screenshot-pair img {
+      display: block;
+      width: 100%;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    .screenshot-pair .ss-label {
+      display: block;
+      text-align: center;
+      font-size: .75rem;
+      color: var(--gray-500);
+      margin-top: .35rem;
+      font-weight: 500;
+    }
+
     /* ───── RESPONSIVE ───── */
     @media (max-width: 640px) {
       .site-header h1 { font-size: 1.35rem; }
       .card { padding: 1.25rem; }
       .wrapper { padding: 1rem .75rem 3rem; }
+      .screenshot-pair {
+        flex-direction: column;
+        align-items: center;
+      }
+      .screenshot-pair .ss-mobile {
+        max-width: 180px;
+      }
     }
   </style>
 </head>
@@ -353,6 +392,31 @@
       </ol>
 
       <div class="callout callout-success"><strong>Autocompletado:</strong> Al escribir el nombre, rubro o unidad, el sistema sugiere valores ya utilizados en otros viajes para agilizar la carga.</div>
+
+      <h4>Capturas de pantalla</h4>
+      <p style="font-size:.9rem;color:var(--gray-500);margin-bottom:.5rem;"><em>Formulario de productos al crear/editar un viaje:</em></p>
+      <div class="screenshot-pair">
+        <div class="ss-desktop">
+          <img src="images/productos-formulario-desktop.png" alt="Productos en formulario — Desktop">
+          <span class="ss-label">🖥️ Desktop</span>
+        </div>
+        <div class="ss-mobile">
+          <img src="images/productos-formulario-mobile.png" alt="Productos en formulario — Móvil">
+          <span class="ss-label">📱 Móvil</span>
+        </div>
+      </div>
+
+      <p style="font-size:.9rem;color:var(--gray-500);margin-bottom:.5rem;margin-top:1rem;"><em>Productos visibles en el historial de viajes:</em></p>
+      <div class="screenshot-pair">
+        <div class="ss-desktop">
+          <img src="images/productos-historial-desktop.png" alt="Productos en historial — Desktop">
+          <span class="ss-label">🖥️ Desktop</span>
+        </div>
+        <div class="ss-mobile">
+          <img src="images/productos-historial-mobile.png" alt="Productos en historial — Móvil">
+          <span class="ss-label">📱 Móvil</span>
+        </div>
+      </div>
     </div>
 
     <!-- GOOGLE MAPS -->
@@ -367,6 +431,18 @@
         <li>También podés escribir la dirección completa manualmente sin usar el autocompletado</li>
       </ol>
       <div class="callout callout-info">Esto reduce errores de tipeo y estandariza los nombres de localidades.</div>
+
+      <h4>Capturas de pantalla</h4>
+      <div class="screenshot-pair">
+        <div class="ss-desktop">
+          <img src="images/google-maps-autocomplete-desktop.png" alt="Autocompletado Google Maps — Desktop">
+          <span class="ss-label">🖥️ Desktop</span>
+        </div>
+        <div class="ss-mobile">
+          <img src="images/google-maps-autocomplete-mobile.png" alt="Autocompletado Google Maps — Móvil">
+          <span class="ss-label">📱 Móvil</span>
+        </div>
+      </div>
     </div>
 
     <!-- MEJORAS HISTORIAL -->
@@ -429,6 +505,31 @@
       </ol>
 
       <div class="callout callout-info"><strong>Diseño amigable:</strong> Las descripciones están en español, los nombres de campos se muestran traducidos (ej: "origen" en lugar de "origin"), y cada tipo de acción tiene su propio ícono.</div>
+
+      <h4>Capturas de pantalla</h4>
+      <p style="font-size:.9rem;color:var(--gray-500);margin-bottom:.5rem;"><em>Listado de auditoría:</em></p>
+      <div class="screenshot-pair">
+        <div class="ss-desktop">
+          <img src="images/auditoria-pagina-desktop.png" alt="Auditoría — Desktop">
+          <span class="ss-label">🖥️ Desktop</span>
+        </div>
+        <div class="ss-mobile">
+          <img src="images/auditoria-pagina-mobile.png" alt="Auditoría — Móvil">
+          <span class="ss-label">📱 Móvil</span>
+        </div>
+      </div>
+
+      <p style="font-size:.9rem;color:var(--gray-500);margin-bottom:.5rem;margin-top:1rem;"><em>Detalle de un registro:</em></p>
+      <div class="screenshot-pair">
+        <div class="ss-desktop">
+          <img src="images/auditoria-detalle-desktop.png" alt="Detalle auditoría — Desktop">
+          <span class="ss-label">🖥️ Desktop</span>
+        </div>
+        <div class="ss-mobile">
+          <img src="images/auditoria-detalle-mobile.png" alt="Detalle auditoría — Móvil">
+          <span class="ss-label">📱 Móvil</span>
+        </div>
+      </div>
     </div>
 
     <!-- CORRECCIONES -->
