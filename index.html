@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NORPAN Logística — Documentación</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚚</text></svg>">
+  <style>
+    :root {
+      --brand: #1e40af;
+      --brand-light: #3b82f6;
+      --brand-bg: #eff6ff;
+      --accent: #f59e0b;
+      --accent-bg: #fffbeb;
+      --green: #16a34a;
+      --green-bg: #f0fdf4;
+      --red: #dc2626;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+      --radius: 12px;
+      --shadow: 0 1px 3px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -4px rgba(0,0,0,.1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      color: var(--gray-900);
+      background: var(--gray-50);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ───── HEADER ───── */
+    .site-header {
+      background: linear-gradient(135deg, var(--brand) 0%, #1e3a8a 100%);
+      color: #fff;
+      padding: 2.5rem 1rem 2rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-lg);
+    }
+    .site-header h1 { font-size: 1.8rem; font-weight: 700; letter-spacing: -.02em; }
+    .site-header p { opacity: .85; font-size: .95rem; margin-top: .25rem; }
+
+    /* ───── LAYOUT ───── */
+    .wrapper {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
+    }
+
+    /* ───── NAV ───── */
+    .toc {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow);
+    }
+    .toc h2 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--gray-500);
+      margin-bottom: .75rem;
+    }
+    .toc ul { list-style: none; }
+    .toc li { margin-bottom: .35rem; }
+    .toc a {
+      color: var(--brand-light);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color .15s;
+    }
+    .toc a:hover { color: var(--brand); text-decoration: underline; }
+
+    /* ───── VERSION BADGE ───── */
+    .version-section {
+      margin-bottom: 2.5rem;
+    }
+    .version-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--brand);
+      color: #fff;
+      font-size: .85rem;
+      font-weight: 600;
+      padding: .35rem .9rem;
+      border-radius: 999px;
+      margin-bottom: .75rem;
+      letter-spacing: .01em;
+    }
+    .version-badge.older {
+      background: var(--gray-500);
+    }
+    .version-badge .dot {
+      width: 8px; height: 8px;
+      background: #34d399;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .4; }
+    }
+
+    /* ───── CARDS ───── */
+    .card {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow);
+      transition: box-shadow .2s;
+    }
+    .card:hover { box-shadow: var(--shadow-lg); }
+
+    .card h3 {
+      font-size: 1.25rem;
+      margin-bottom: .75rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .card h3 .icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .card h4 {
+      font-size: 1rem;
+      margin: 1.25rem 0 .5rem;
+      color: var(--gray-700);
+    }
+
+    .card p, .card li {
+      color: var(--gray-700);
+      font-size: .95rem;
+    }
+    .card ul, .card ol {
+      padding-left: 1.25rem;
+      margin: .5rem 0;
+    }
+    .card li { margin-bottom: .3rem; }
+
+    /* ───── TABLES ───── */
+    .table-wrap {
+      overflow-x: auto;
+      margin: .75rem 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .9rem;
+    }
+    th {
+      text-align: left;
+      background: var(--gray-100);
+      padding: .6rem .75rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      border-bottom: 2px solid var(--gray-200);
+    }
+    td {
+      padding: .55rem .75rem;
+      border-bottom: 1px solid var(--gray-200);
+      color: var(--gray-700);
+    }
+    tr:last-child td { border-bottom: none; }
+
+    /* ───── CALLOUTS ───── */
+    .callout {
+      border-left: 4px solid;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: .85rem 1rem;
+      margin: .75rem 0;
+      font-size: .9rem;
+    }
+    .callout-info {
+      border-color: var(--brand-light);
+      background: var(--brand-bg);
+      color: #1e3a5f;
+    }
+    .callout-warn {
+      border-color: var(--accent);
+      background: var(--accent-bg);
+      color: #78350f;
+    }
+    .callout-success {
+      border-color: var(--green);
+      background: var(--green-bg);
+      color: #14532d;
+    }
+
+    /* ───── IMAGES ───── */
+    .screenshot {
+      display: block;
+      max-width: 100%;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      margin: 1rem auto;
+      box-shadow: var(--shadow);
+    }
+    .screenshot-caption {
+      text-align: center;
+      font-size: .8rem;
+      color: var(--gray-500);
+      margin-top: -.5rem;
+      margin-bottom: .75rem;
+    }
+
+    /* ───── BUGFIX LIST ───── */
+    .bugfix {
+      display: flex;
+      align-items: baseline;
+      gap: .5rem;
+      margin-bottom: .4rem;
+      font-size: .9rem;
+      color: var(--gray-700);
+    }
+    .bugfix::before {
+      content: "🐛";
+      flex-shrink: 0;
+    }
+
+    /* ───── SECTION DIVIDER ───── */
+    .divider {
+      border: none;
+      border-top: 2px solid var(--gray-200);
+      margin: 3rem 0;
+    }
+
+    /* ───── ROLE TABLE ───── */
+    .role-table td:nth-child(2),
+    .role-table td:nth-child(3),
+    .role-table th:nth-child(2),
+    .role-table th:nth-child(3) {
+      text-align: center;
+    }
+
+    /* ───── FAQ ───── */
+    details {
+      margin-bottom: .65rem;
+    }
+    details summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--gray-900);
+      padding: .4rem 0;
+    }
+    details summary:hover { color: var(--brand); }
+    details > div {
+      padding: .25rem 0 .5rem 1rem;
+      color: var(--gray-700);
+      font-size: .9rem;
+    }
+
+    /* ───── FOOTER ───── */
+    .site-footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: .8rem;
+      color: var(--gray-500);
+      border-top: 1px solid var(--gray-200);
+    }
+
+    /* ───── RESPONSIVE ───── */
+    @media (max-width: 640px) {
+      .site-header h1 { font-size: 1.35rem; }
+      .card { padding: 1.25rem; }
+      .wrapper { padding: 1rem .75rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════ HEADER ════════════ -->
+<header class="site-header">
+  <h1>🚚 NORPAN Logística — Control de Transporte</h1>
+  <p>Documentación de funcionalidades y novedades</p>
+</header>
+
+<main class="wrapper">
+
+  <!-- ════════════ TOC ════════════ -->
+  <nav class="toc" id="top">
+    <h2>Contenido</h2>
+    <ul>
+      <li>🆕 <a href="#v2026-03-01">Versión 1 de marzo 2026</a></li>
+      <li>🆕 <a href="#v2026-02-26">Versión 26 de febrero 2026</a></li>
+      <li>──────</li>
+      <li>🚚 <a href="#estados">Estado de Viajes</a></li>
+      <li>📊 <a href="#exportacion">Exportación Excel / PDF</a></li>
+      <li>🔍 <a href="#filtros">Filtros Avanzados</a></li>
+      <li>🔔 <a href="#notificaciones">Notificaciones Push</a></li>
+      <li>📊 <a href="#campos-pendientes">Campos Pendientes y Completados</a></li>
+      <li>📝 <a href="#datos-faltantes">Datos Faltantes</a></li>
+      <li>⚙️ <a href="#config-alertas">Configuración de Alertas</a></li>
+      <li>🏠 <a href="#home">Página de Inicio</a></li>
+      <li>🔒 <a href="#permisos">Permisos por Rol</a></li>
+      <li>📱 <a href="#ios">Notificaciones en iOS</a></li>
+    </ul>
+  </nav>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- ═══ VERSIÓN 1 MARZO 2026 ═══ -->
+  <!-- ════════════════════════════════════════════ -->
+  <section class="version-section" id="v2026-03-01">
+    <span class="version-badge"><span class="dot"></span> Versión — 1 de marzo 2026</span>
+
+    <!-- PRODUCTOS -->
+    <div class="card" id="productos">
+      <h3><span class="icon">📦</span> Productos Estructurados en Viajes</h3>
+      <p>Ahora cada viaje puede tener una <strong>lista de productos</strong> asociada con información detallada. Ya no es necesario anotar los productos en "Observaciones" de forma libre.</p>
+
+      <h4>Datos de cada producto</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Campo</th><th>Ejemplo</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Nombre</strong></td><td>ACEITE GRANO DE ORO MEZCLA 4 × 5000 ML</td></tr>
+            <tr><td><strong>Rubro</strong></td><td>Alimentos</td></tr>
+            <tr><td><strong>Cantidad</strong></td><td>1560</td></tr>
+            <tr><td><strong>Unidad</strong></td><td>cajas</td></tr>
+            <tr><td><strong>Valorización</strong></td><td>$150.000</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-info">Todos los campos son opcionales — podés cargar solo lo que tengas disponible.</div>
+
+      <h4>Cómo usar</h4>
+      <ol>
+        <li>Al <strong>crear o editar un viaje</strong>, aparece la sección <strong>"Productos"</strong></li>
+        <li>Hacé clic en <strong>"Agregar producto"</strong> para sumar una fila</li>
+        <li>Completá los campos que conozcas (nombre, rubro, cantidad, unidad, valorización)</li>
+        <li>Podés agregar <strong>hasta 50 productos</strong> por viaje</li>
+        <li>Para eliminar un producto, usá el botón <strong>✕</strong> de la fila</li>
+        <li>Los productos aparecen en el <strong>detalle del viaje</strong> y en la <strong>tabla del historial</strong></li>
+        <li>También se incluyen en las <strong>exportaciones Excel y PDF</strong></li>
+      </ol>
+
+      <div class="callout callout-success"><strong>Autocompletado:</strong> Al escribir el nombre, rubro o unidad, el sistema sugiere valores ya utilizados en otros viajes para agilizar la carga.</div>
+    </div>
+
+    <!-- GOOGLE MAPS -->
+    <div class="card" id="google-maps">
+      <h3><span class="icon">📍</span> Autocompletado de Direcciones (Google Maps)</h3>
+      <p>Los campos <strong>Origen</strong> y <strong>Destino</strong> ahora tienen <strong>autocompletado inteligente</strong> con Google Maps.</p>
+      <h4>Cómo funciona</h4>
+      <ol>
+        <li>Empezá a escribir una dirección o localidad en el campo de Origen o Destino</li>
+        <li>Aparecerá una lista de sugerencias de Google Maps</li>
+        <li>Seleccioná la dirección correcta de la lista</li>
+        <li>También podés escribir la dirección completa manualmente sin usar el autocompletado</li>
+      </ol>
+      <div class="callout callout-info">Esto reduce errores de tipeo y estandariza los nombres de localidades.</div>
+    </div>
+
+    <!-- MEJORAS HISTORIAL -->
+    <div class="card">
+      <h3><span class="icon">📋</span> Mejoras en el Historial</h3>
+      <ul>
+        <li><strong>Filtro de período por defecto:</strong> Ahora al ingresar al Historial, se muestran <strong>todos los viajes</strong> en lugar de solo el mes actual. Esto facilita encontrar registros antiguos sin cambiar el filtro manualmente.</li>
+      </ul>
+    </div>
+
+    <!-- CORRECCIONES -->
+    <div class="card">
+      <h3><span class="icon">🐛</span> Correcciones</h3>
+      <div class="bugfix"><strong>Exportación PDF:</strong> Se corrigió un error que podía causar que la exportación a PDF fallara con un error del servidor en listados grandes.</div>
+      <div class="bugfix"><strong>Tabla de productos en PDF:</strong> Se ajustó el espaciado entre el encabezado y la primera fila.</div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- ═══ VERSIÓN 26 FEBRERO 2026 ═══ -->
+  <!-- ════════════════════════════════════════════ -->
+  <section class="version-section" id="v2026-02-26">
+    <span class="version-badge"><span class="dot"></span> Versión — 26 de febrero 2026</span>
+
+    <!-- AUDITORÍA -->
+    <div class="card" id="auditoria">
+      <h3><span class="icon">🔍</span> Auditoría — Registro de Actividad <small style="font-size:.75rem;color:var(--gray-500);margin-left:.5rem;">(Solo Administradores)</small></h3>
+      <p>Nueva página de <strong>Auditoría</strong> que permite a los administradores ver un registro completo de todas las acciones realizadas en el sistema.</p>
+
+      <h4>¿Qué se registra?</h4>
+      <ul>
+        <li>Creación, edición y eliminación de viajes</li>
+        <li>Cambios de estado (marcar llegada, descarga, revertir)</li>
+        <li>Asignación de cupos de descarga</li>
+        <li>Gestión de usuarios (crear, bloquear, eliminar)</li>
+        <li>Cambios en configuración de notificaciones</li>
+        <li>Exportaciones de datos</li>
+      </ul>
+
+      <h4>Información de cada registro</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Dato</th><th>Ejemplo</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Acción</strong></td><td>Editó viaje</td></tr>
+            <tr><td><strong>Viaje</strong></td><td>#2026-0142 (clic para ver detalle)</td></tr>
+            <tr><td><strong>Usuario</strong></td><td>Juan Pérez</td></tr>
+            <tr><td><strong>Fecha y hora</strong></td><td>26/02/2026 14:30</td></tr>
+            <tr><td><strong>Cambios</strong></td><td>origen: Buenos Aires → Rosario</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>Cómo usar</h4>
+      <ol>
+        <li>Ingresá a <strong>Auditoría</strong> desde el menú lateral (solo visible para administradores)</li>
+        <li>Usá los <strong>filtros</strong> para buscar por acción, entidad, usuario o fecha</li>
+        <li>Hacé clic en un registro para ver el <strong>detalle completo</strong> de los cambios</li>
+        <li>El ID del viaje es un enlace directo al detalle del transporte</li>
+      </ol>
+
+      <div class="callout callout-info"><strong>Diseño amigable:</strong> Las descripciones están en español, los nombres de campos se muestran traducidos (ej: "origen" en lugar de "origin"), y cada tipo de acción tiene su propio ícono.</div>
+    </div>
+
+    <!-- CORRECCIONES -->
+    <div class="card">
+      <h3><span class="icon">🐛</span> Correcciones</h3>
+      <div class="bugfix"><strong>Buscador:</strong> Se corrigió un problema donde el ícono de búsqueda se superponía al texto del placeholder.</div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- ═══ FUNCIONALIDADES BASE (ene-feb 2026) ═══ -->
+  <!-- ════════════════════════════════════════════ -->
+  <h2 style="font-size:1.5rem;margin-bottom:1.5rem;color:var(--gray-700);">📖 Funcionalidades <small style="font-weight:400;font-size:.85rem;">(enero – febrero 2026)</small></h2>
+
+  <!-- ESTADOS -->
+  <div class="card" id="estados">
+    <h3><span class="icon">🚚</span> Estado de Viajes Mejorado</h3>
+    <p>Los viajes tienen 3 estados en su ciclo de vida:</p>
+    <ol>
+      <li><strong>En viaje</strong> → Transporte en tránsito</li>
+      <li><strong>En destino</strong> → Llegó al destino (se registra hora real de llegada)</li>
+      <li><strong>Descargado</strong> → Mercadería descargada (estado final)</li>
+    </ol>
+
+    <img src="images/historial-estados.png" alt="Estados de viaje en el historial" class="screenshot">
+    <p class="screenshot-caption">Estados en el historial</p>
+
+    <h4>Cómo usar</h4>
+    <ul>
+      <li>En el <strong>Historial</strong>, cada registro muestra su estado actual con un badge de color</li>
+      <li>Cualquier usuario puede:
+        <ul>
+          <li><strong>Marcar como "En destino"</strong> (botón azul en detalle)</li>
+          <li><strong>Marcar como "Descargado"</strong> (botón verde en detalle)</li>
+          <li><strong>Revertir</strong> al estado anterior si hubo un error (botón amarillo)</li>
+        </ul>
+      </li>
+    </ul>
+
+    <img src="images/detalle-botones-estado.png" alt="Botones de cambio de estado" class="screenshot">
+    <p class="screenshot-caption">Botones de cambio de estado en detalle del viaje</p>
+  </div>
+
+  <!-- EXPORTACIÓN -->
+  <div class="card" id="exportacion">
+    <h3><span class="icon">📊</span> Exportación de Datos</h3>
+    <p>Desde el <strong>Historial</strong> puedes exportar registros:</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Formato</th><th>Descripción</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Excel (.xlsx)</strong></td><td>Hoja de cálculo con todos los datos para análisis</td></tr>
+          <tr><td><strong>PDF</strong></td><td>Documento formateado para impresión o archivo</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <img src="images/export-menu.png" alt="Menú de exportación" class="screenshot">
+
+    <h4>Cómo usar</h4>
+    <ol>
+      <li>Haz clic en <strong>"Exportar"</strong></li>
+      <li>Selecciona el formato (Excel o PDF)</li>
+      <li>Se descarga automáticamente</li>
+    </ol>
+
+    <div class="callout callout-warn">⚠️ Actualmente exporta <strong>todos los registros</strong> del sistema, no los filtrados. (Mejora pendiente)</div>
+  </div>
+
+  <!-- FILTROS -->
+  <div class="card" id="filtros">
+    <h3><span class="icon">🔍</span> Filtros Avanzados en Historial</h3>
+    <h4>Filtro por ID de Transporte</h4>
+    <ul>
+      <li>Busca directamente por el <strong>número de viaje</strong> (ej: "2026-0001")</li>
+      <li>Útil para encontrar un registro específico rápidamente</li>
+    </ul>
+    <h4>Ordenamiento de columnas</h4>
+    <p>Haz clic en los encabezados de columna para ordenar:</p>
+    <ul>
+      <li>ID de Transporte</li>
+      <li>Origen / Destino</li>
+      <li>Remito</li>
+      <li>Transportista</li>
+      <li>Estado</li>
+    </ul>
+  </div>
+
+  <!-- NOTIFICACIONES -->
+  <div class="card" id="notificaciones">
+    <h3><span class="icon">🔔</span> Sistema de Notificaciones Push</h3>
+
+    <div class="callout callout-warn">
+      <strong>⚠️ IMPORTANTE PARA OPERADORES:</strong> Las notificaciones push requieren activación manual por cada usuario. Si un operador <strong>NO activa</strong> las notificaciones, <strong>NO recibirá alertas</strong> sobre campos pendientes en los viajes. Es fundamental que todos los usuarios activen las notificaciones.
+    </div>
+
+    <h4>Flujo de Activación</h4>
+
+    <p><strong>1. Modal de Bienvenida (Primera vez)</strong></p>
+    <p>Al ingresar al sistema después de la actualización, aparecerá un modal explicando los beneficios:</p>
+    <img src="images/modal-onboarding.png" alt="Modal de bienvenida" class="screenshot">
+
+    <ul>
+      <li>✅ Alertas de documentos pendientes (Factura, CAI, etc.)</li>
+      <li>✅ Recordatorios configurables por prioridad</li>
+      <li>✅ Notificaciones solo en horario laboral</li>
+    </ul>
+
+    <p><strong>2. Permiso del Navegador</strong></p>
+    <img src="images/browser-permission.png" alt="Permiso del navegador" class="screenshot">
+    <div class="callout callout-warn">⚠️ El usuario debe hacer clic en <strong>"Permitir"</strong>. Si hace clic en "Bloquear", deberá habilitarlas manualmente desde la configuración del navegador.</div>
+
+    <p><strong>3. Banner Recordatorio</strong></p>
+    <p>Si no se activaron las notificaciones, aparecerá un banner amarillo cada 7 días:</p>
+    <img src="images/banner-reminder.png" alt="Banner recordatorio" class="screenshot">
+
+    <p><strong>4. Activación desde el Menú</strong></p>
+    <p>En cualquier momento, el usuario puede activar desde el <strong>icono de campana 🔔</strong> en el header:</p>
+    <img src="images/bell-menu-operator.png" alt="Menú campana para operador" class="screenshot">
+
+    <h4>Estado del Icono de Campana</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Icono</th><th>Significado</th></tr></thead>
+        <tbody>
+          <tr><td>🔔 (verde)</td><td>Notificaciones <strong>activadas</strong></td></tr>
+          <tr><td>🔕 (gris)</td><td>Notificaciones <strong>desactivadas</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>Permisos por Rol</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Acción</th><th>Operador</th><th>Admin</th></tr></thead>
+        <tbody>
+          <tr><td>Activar notificaciones</td><td style="text-align:center">✅</td><td style="text-align:center">✅</td></tr>
+          <tr><td>Desactivar notificaciones</td><td style="text-align:center">❌</td><td style="text-align:center">✅</td></tr>
+          <tr><td>Configurar alertas</td><td style="text-align:center">❌</td><td style="text-align:center">✅</td></tr>
+          <tr><td>Toggle notif. por viaje</td><td style="text-align:center">❌</td><td style="text-align:center">✅</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout callout-info">Los operadores no pueden desactivar las notificaciones una vez activadas, para asegurar el seguimiento de documentación pendiente.</div>
+  </div>
+
+  <!-- CAMPOS PENDIENTES -->
+  <div class="card" id="campos-pendientes">
+    <h3><span class="icon">📊</span> Indicadores de Campos Pendientes y Completados</h3>
+    <p>Cada viaje en el <strong>Historial</strong> muestra un <strong>resumen visual</strong> del estado de completitud de sus campos:</p>
+
+    <h4>Indicadores en la lista</h4>
+    <ul>
+      <li><strong style="color:#d97706">Campos pendientes (ámbar):</strong> Accordion expandible con campos agrupados por sección:
+        <ul>
+          <li>📍 <strong>Viaje</strong> — Hora salida, Fecha llegada, Hora descarga aprox., Fecha descarga bodega, Cupo descarga</li>
+          <li>📄 <strong>Documentación</strong> — Remito, CAI, Rubro, Factura, Rentas, DJ-722 / 207, Satelital operativo</li>
+          <li>🚛 <strong>Transporte</strong> — Empresa, Contacto, Chofer, Patente chasis, Patente acoplado</li>
+        </ul>
+      </li>
+      <li><strong style="color:var(--green)">Campos completados (verde):</strong> Accordion con los campos ya completados, con ✓ delante de cada uno.</li>
+      <li><strong style="color:var(--green)">Todos completos:</strong> Badge verde "Todos los campos completados".</li>
+    </ul>
+
+    <h4>Actualización instantánea</h4>
+    <p>Al editar un viaje y guardar, los indicadores se <strong>actualizan inmediatamente</strong> sin recargar la página. Lo mismo al marcar un viaje como "En destino" o "Descargado".</p>
+  </div>
+
+  <!-- DATOS FALTANTES -->
+  <div class="card" id="datos-faltantes">
+    <h3><span class="icon">📝</span> Datos Faltantes y Campos Pendientes</h3>
+    <p>Cuando se registra un viaje, algunos campos pueden quedar vacíos porque la información aún no está disponible. El sistema los identifica como <strong>"pendientes"</strong> y envía notificaciones automáticas.</p>
+
+    <h4>Campos que generan alertas</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Campo</th><th>Descripción</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Remito</strong></td><td>Número de remito del transporte</td></tr>
+          <tr><td><strong>CAI</strong></td><td>Código de Autorización de Impresión</td></tr>
+          <tr><td><strong>Factura</strong></td><td>Número de factura asociada</td></tr>
+          <tr><td><strong>Pago Rentas</strong></td><td>Indicador de pago de rentas</td></tr>
+          <tr><td><strong>DJ-722 / 207</strong></td><td>Declaración Jurada 722 / 207</td></tr>
+          <tr><td><strong>Satelital Operativo</strong></td><td>Indicador de satelital operativo</td></tr>
+          <tr><td><strong>Observaciones</strong></td><td>Notas adicionales del viaje</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>Flujo: de la notificación al dato completado</h4>
+    <ol>
+      <li><strong>Recibís una notificación push</strong> indicando qué viaje tiene campos vacíos</li>
+      <li><strong>Hacés clic</strong> y el sistema te lleva al Historial con el viaje afectado</li>
+      <li>Si no tenés sesión, te redirige al login y luego al viaje automáticamente</li>
+      <li>Se muestra un <strong>banner amarillo</strong> con los campos realmente vacíos en ese momento</li>
+      <li>Hacés clic en <strong>"✏️ Editar"</strong>, completás los campos y guardás</li>
+      <li>Si completás todos los campos pendientes, el sistema deja de notificar por ese viaje</li>
+    </ol>
+
+    <h4>Preguntas frecuentes</h4>
+
+    <details>
+      <summary>¿Cuándo se envían las notificaciones?</summary>
+      <div>Solo dentro del horario laboral configurado por el administrador (por defecto 08:00 a 20:00).</div>
+    </details>
+
+    <details>
+      <summary>¿Cuántas veces me notifican por el mismo viaje?</summary>
+      <div>
+        Depende de la prioridad del campo:<br>
+        • <strong>Crítica</strong> (Remito, CAI): Hasta 3 veces al día<br>
+        • <strong>Alta</strong> (Rentas, DJ 722): 1 vez al día<br>
+        • <strong>Media</strong> (Factura, Satelital): Solo al crear el viaje<br>
+        • <strong>Baja</strong> (Observaciones): No notifica por defecto
+      </div>
+    </details>
+
+    <details>
+      <summary>¿Puedo silenciar las alertas de un viaje específico?</summary>
+      <div>Solo los administradores pueden desactivar notificaciones por viaje individual desde el icono de campana en la fila del historial.</div>
+    </details>
+
+    <details>
+      <summary>¿Qué pasa si completo un campo y otro usuario recibe una notificación vieja?</summary>
+      <div>Al hacer clic, el banner solo mostrará los campos que <em>aún</em> están vacíos. Si ya completaste el remito, no aparecerá aunque la notificación original lo mencionara.</div>
+    </details>
+  </div>
+
+  <!-- CONFIG ALERTAS -->
+  <div class="card" id="config-alertas">
+    <h3><span class="icon">⚙️</span> Configuración de Alertas <small style="font-size:.75rem;color:var(--gray-500);margin-left:.5rem;">(Solo Administradores)</small></h3>
+
+    <p>Acceso: Icono de campana 🔔 → <strong>"Administrar alertas"</strong></p>
+
+    <img src="images/bell-menu-admin.png" alt="Menú admin de notificaciones" class="screenshot">
+    <img src="images/modal-admin-alertas.png" alt="Modal de configuración" class="screenshot">
+
+    <h4>🕐 Horario de notificaciones</h4>
+    <ul>
+      <li><strong>Desde:</strong> Hora de inicio (ej: 08:00)</li>
+      <li><strong>Hasta:</strong> Hora de fin (ej: 20:00)</li>
+      <li>Fuera de este horario <strong>no se envían</strong> notificaciones</li>
+    </ul>
+
+    <h4>📋 Configuración por campo</h4>
+    <p>Para cada campo: activar/desactivar, prioridad (🔴 Crítica, 🟠 Alta, 🟡 Media, ⚪ Baja) y frecuencia.</p>
+    <p>Campos configurables: Factura, CAI, Remito, Pago Rentas, Taxes Rentas, DJ 722, Satelital Operativo.</p>
+
+    <h4>Frecuencias disponibles</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Frecuencia</th><th>Horarios</th><th>Disponible para</th></tr></thead>
+        <tbody>
+          <tr><td>3 veces al día</td><td>08:00, 12:00 y 17:00</td><td>Crítica, Alta</td></tr>
+          <tr><td>2 veces al día</td><td>09:00 y 15:00</td><td>Crítica, Alta</td></tr>
+          <tr><td>1 vez al día</td><td>Hora personalizable</td><td>Todas</td></tr>
+          <tr><td>Solo al crear</td><td>Al registrar el viaje</td><td>Todas excepto Baja</td></tr>
+          <tr><td>Ninguna</td><td>No notifica</td><td>Todas</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>Control por Viaje</h4>
+    <p>En el Historial, cada fila tiene un icono de campana:</p>
+    <img src="images/historial-notif-toggle.png" alt="Toggle notificaciones por viaje" class="screenshot">
+    <ul>
+      <li>🔔 (verde) = Notificaciones <strong>activadas</strong> para ese viaje</li>
+      <li>🔕 (gris) = Notificaciones <strong>desactivadas</strong> para ese viaje</li>
+    </ul>
+  </div>
+
+  <!-- HOME -->
+  <div class="card" id="home">
+    <h3><span class="icon">🏠</span> Página de Inicio</h3>
+    <p>La pantalla principal muestra las funcionalidades organizadas por rol:</p>
+    <img src="images/home-nuevo.png" alt="Página de inicio" class="screenshot">
+    <ul>
+      <li><strong>Funcionalidades generales</strong> disponibles para todos</li>
+      <li><strong>Funcionalidades de Administrador</strong> en sección separada con fondo diferenciado</li>
+    </ul>
+  </div>
+
+  <!-- PERMISOS -->
+  <div class="card" id="permisos">
+    <h3><span class="icon">🔒</span> Resumen de Permisos por Rol</h3>
+    <div class="table-wrap">
+      <table class="role-table">
+        <thead><tr><th>Funcionalidad</th><th>Operador</th><th>Admin</th></tr></thead>
+        <tbody>
+          <tr><td>Ver historial</td><td>✅</td><td>✅</td></tr>
+          <tr><td>Exportar Excel/PDF</td><td>✅</td><td>✅</td></tr>
+          <tr><td>Editar viajes</td><td>✅</td><td>✅</td></tr>
+          <tr><td>Marcar llegada/descarga</td><td>✅</td><td>✅</td></tr>
+          <tr><td>Revertir estado</td><td>✅</td><td>✅</td></tr>
+          <tr><td>Activar notificaciones</td><td>✅</td><td>✅</td></tr>
+          <tr><td>Desactivar notificaciones</td><td>❌</td><td>✅</td></tr>
+          <tr><td>Configurar alertas</td><td>❌</td><td>✅</td></tr>
+          <tr><td>Toggle notif. por viaje</td><td>❌</td><td>✅</td></tr>
+          <tr><td>Ver eliminados</td><td>❌</td><td>✅</td></tr>
+          <tr><td>Eliminar viajes</td><td>❌</td><td>✅</td></tr>
+          <tr><td>Gestión de usuarios</td><td>❌</td><td>✅</td></tr>
+          <tr><td>Auditoría</td><td>❌</td><td>✅</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- iOS -->
+  <div class="card" id="ios">
+    <h3><span class="icon">📱</span> Notificaciones en iPhone / iPad (iOS)</h3>
+    <p>Las notificaciones push en iOS Safari funcionan <strong>únicamente</strong> cuando la app está instalada como PWA.</p>
+
+    <h4>Pasos para instalar</h4>
+    <ol>
+      <li><strong>Abrir en Safari</strong> (obligatorio usar Safari, no Chrome)</li>
+      <li>Tocar el icono <strong>Compartir</strong> (cuadrado con flecha hacia arriba)</li>
+      <li>Seleccionar <strong>"Añadir a pantalla de inicio"</strong></li>
+      <li>Confirmar con <strong>"Añadir"</strong></li>
+      <li>Abrir la app desde el <strong>icono instalado</strong></li>
+      <li>Ahora sí podrás activar notificaciones desde el menú 🔔</li>
+    </ol>
+
+    <div class="callout callout-info">
+      <strong>Versión mínima requerida:</strong> iOS 16.4 / iPadOS 16.4 o superior.<br>
+      Si se abre desde Safari normal (sin instalar), NO aparecerá la opción de notificaciones.
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <p>NORPAN Logística — Control de Transporte &copy; 2026</p>
+  <p>Última actualización: 1 de marzo 2026</p>
+</footer>
+
+</body>
+</html>
