@@ -337,8 +337,8 @@
   <nav class="toc" id="top">
     <h2>Contenido</h2>
     <ul>
-      <li>🆕 <a href="#v2026-03-01">Versión 1 de marzo 2026</a></li>
-      <li>🆕 <a href="#v2026-02-26">Versión 26 de febrero 2026</a></li>
+      <li>🆕 <a href="#v2026-03-04">Versión 4 de marzo 2026</a></li>
+      <li>🆕 <a href="#v2026-02-16">Versión 16 de febrero 2026</a></li>
       <li>──────</li>
       <li>🚚 <a href="#estados">Estado de Viajes</a></li>
       <li>📊 <a href="#exportacion">Exportación Excel / PDF</a></li>
@@ -354,10 +354,75 @@
   </nav>
 
   <!-- ════════════════════════════════════════════ -->
-  <!-- ═══ VERSIÓN 1 MARZO 2026 ═══ -->
+  <!-- ═══ VERSIÓN 4 MARZO 2026 ═══ -->
   <!-- ════════════════════════════════════════════ -->
-  <section class="version-section" id="v2026-03-01">
-    <span class="version-badge"><span class="dot"></span> Versión — 1 de marzo 2026</span>
+  <section class="version-section" id="v2026-03-04">
+    <span class="version-badge"><span class="dot"></span> Versión — 4 de marzo 2026</span>
+
+    <!-- AUDITORÍA -->
+    <div class="card" id="auditoria">
+      <h3><span class="icon">🔍</span> Auditoría — Registro de Actividad <small style="font-size:.75rem;color:var(--gray-500);margin-left:.5rem;">(Solo Administradores)</small></h3>
+      <p>Nueva página de <strong>Auditoría</strong> que permite a los administradores ver un registro completo de todas las acciones realizadas en el sistema.</p>
+
+      <h4>¿Qué se registra?</h4>
+      <ul>
+        <li>Creación, edición y eliminación de viajes</li>
+        <li>Cambios de estado (marcar llegada, descarga, revertir)</li>
+        <li>Asignación de cupos de descarga</li>
+        <li>Gestión de usuarios (crear, bloquear, eliminar)</li>
+        <li>Cambios en configuración de notificaciones</li>
+        <li>Exportaciones de datos</li>
+      </ul>
+
+      <h4>Información de cada registro</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Dato</th><th>Ejemplo</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Acción</strong></td><td>Editó viaje</td></tr>
+            <tr><td><strong>Viaje</strong></td><td>#2026-0142 (clic para ver detalle)</td></tr>
+            <tr><td><strong>Usuario</strong></td><td>Juan Pérez</td></tr>
+            <tr><td><strong>Fecha y hora</strong></td><td>04/03/2026 14:30</td></tr>
+            <tr><td><strong>Cambios</strong></td><td>origen: Buenos Aires → Rosario</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>Cómo usar</h4>
+      <ol>
+        <li>Ingresá a <strong>Auditoría</strong> desde el menú lateral (solo visible para administradores)</li>
+        <li>Usá los <strong>filtros</strong> para buscar por acción, entidad, usuario o fecha</li>
+        <li>Hacé clic en un registro para ver el <strong>detalle completo</strong> de los cambios</li>
+        <li>El ID del viaje es un enlace directo al detalle del transporte</li>
+      </ol>
+
+      <div class="callout callout-info"><strong>Diseño amigable:</strong> Las descripciones están en español, los nombres de campos se muestran traducidos (ej: "origen" en lugar de "origin"), y cada tipo de acción tiene su propio ícono.</div>
+
+      <h4>Capturas de pantalla</h4>
+      <p style="font-size:.9rem;color:var(--gray-500);margin-bottom:.5rem;"><em>Listado de auditoría:</em></p>
+      <div class="screenshot-pair">
+        <div class="ss-desktop">
+          <img src="images/auditoria-pagina-desktop.png" alt="Auditoría — Desktop">
+          <span class="ss-label">🖥️ Desktop</span>
+        </div>
+        <div class="ss-mobile">
+          <img src="images/auditoria-pagina-mobile.png" alt="Auditoría — Móvil">
+          <span class="ss-label">📱 Móvil</span>
+        </div>
+      </div>
+
+      <p style="font-size:.9rem;color:var(--gray-500);margin-bottom:.5rem;margin-top:1rem;"><em>Detalle de un registro:</em></p>
+      <div class="screenshot-pair">
+        <div class="ss-desktop">
+          <img src="images/auditoria-detalle-desktop.png" alt="Detalle auditoría — Desktop">
+          <span class="ss-label">🖥️ Desktop</span>
+        </div>
+        <div class="ss-mobile">
+          <img src="images/auditoria-detalle-mobile.png" alt="Detalle auditoría — Móvil">
+          <span class="ss-label">📱 Móvil</span>
+        </div>
+      </div>
+    </div>
 
     <!-- PRODUCTOS -->
     <div class="card" id="productos">
@@ -370,9 +435,9 @@
           <thead><tr><th>Campo</th><th>Ejemplo</th></tr></thead>
           <tbody>
             <tr><td><strong>Nombre</strong></td><td>ACEITE GRANO DE ORO MEZCLA 4 × 5000 ML</td></tr>
-            <tr><td><strong>Rubro</strong></td><td>Alimentos</td></tr>
+            <tr><td><strong>SKU/Código</strong></td><td>ALI-001</td></tr>
             <tr><td><strong>Cantidad</strong></td><td>1560</td></tr>
-            <tr><td><strong>Unidad</strong></td><td>cajas</td></tr>
+            <tr><td><strong>Unidad</strong></td><td>bulto</td></tr>
             <tr><td><strong>Valorización</strong></td><td>$150.000</td></tr>
           </tbody>
         </table>
@@ -384,14 +449,15 @@
       <ol>
         <li>Al <strong>crear o editar un viaje</strong>, aparece la sección <strong>"Productos"</strong></li>
         <li>Hacé clic en <strong>"Agregar producto"</strong> para sumar una fila</li>
-        <li>Completá los campos que conozcas (nombre, rubro, cantidad, unidad, valorización)</li>
+        <li>Completá los campos que conozcas (nombre, SKU/código, cantidad, unidad, valorización)</li>
         <li>Podés agregar <strong>hasta 50 productos</strong> por viaje</li>
         <li>Para eliminar un producto, usá el botón <strong>✕</strong> de la fila</li>
         <li>Los productos aparecen en el <strong>detalle del viaje</strong> y en la <strong>tabla del historial</strong></li>
         <li>También se incluyen en las <strong>exportaciones Excel y PDF</strong></li>
+        <li>En el paso de <strong>Confirmación</strong>, se muestra una <strong>vista previa</strong> con la tabla de productos antes de guardar</li>
       </ol>
 
-      <div class="callout callout-success"><strong>Autocompletado:</strong> Al escribir el nombre, rubro o unidad, el sistema sugiere valores ya utilizados en otros viajes para agilizar la carga.</div>
+      <div class="callout callout-success"><strong>Autocompletado:</strong> Al escribir el nombre o SKU/Código, el sistema sugiere valores ya utilizados en otros viajes para agilizar la carga.</div>
 
       <h4>Capturas de pantalla</h4>
       <p style="font-size:.9rem;color:var(--gray-500);margin-bottom:.5rem;"><em>Formulario de productos al crear/editar un viaje:</em></p>
@@ -462,80 +528,61 @@
   </section>
 
   <!-- ════════════════════════════════════════════ -->
-  <!-- ═══ VERSIÓN 26 FEBRERO 2026 ═══ -->
+  <!-- ═══ VERSIÓN 16 FEBRERO 2026 ═══ -->
   <!-- ════════════════════════════════════════════ -->
-  <section class="version-section" id="v2026-02-26">
-    <span class="version-badge"><span class="dot"></span> Versión — 26 de febrero 2026</span>
+  <section class="version-section" id="v2026-02-16">
+    <span class="version-badge older"><span class="dot"></span> Versión — 16 de febrero 2026</span>
 
-    <!-- AUDITORÍA -->
-    <div class="card" id="auditoria">
-      <h3><span class="icon">🔍</span> Auditoría — Registro de Actividad <small style="font-size:.75rem;color:var(--gray-500);margin-left:.5rem;">(Solo Administradores)</small></h3>
-      <p>Nueva página de <strong>Auditoría</strong> que permite a los administradores ver un registro completo de todas las acciones realizadas en el sistema.</p>
-
-      <h4>¿Qué se registra?</h4>
+    <!-- NOTIFICACIONES AGRUPADAS -->
+    <div class="card">
+      <h3><span class="icon">🔔</span> Mejoras en Notificaciones Push</h3>
+      <p>Las notificaciones push ahora se envían <strong>agrupadas</strong> en lugar de individuales, para no saturar al usuario.</p>
       <ul>
-        <li>Creación, edición y eliminación de viajes</li>
-        <li>Cambios de estado (marcar llegada, descarga, revertir)</li>
-        <li>Asignación de cupos de descarga</li>
-        <li>Gestión de usuarios (crear, bloquear, eliminar)</li>
-        <li>Cambios en configuración de notificaciones</li>
-        <li>Exportaciones de datos</li>
+        <li><strong>Agrupación:</strong> Si hay varios viajes con campos pendientes, se envía una sola notificación resumida</li>
+        <li><strong>URLs corregidas:</strong> Al hacer clic en una notificación, la URL ahora dirige correctamente al viaje en el Historial</li>
+        <li><strong>Endpoint programado:</strong> El sistema puede disparar notificaciones de forma programada (cron) sin intervención manual</li>
       </ul>
+    </div>
 
-      <h4>Información de cada registro</h4>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Dato</th><th>Ejemplo</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Acción</strong></td><td>Editó viaje</td></tr>
-            <tr><td><strong>Viaje</strong></td><td>#2026-0142 (clic para ver detalle)</td></tr>
-            <tr><td><strong>Usuario</strong></td><td>Juan Pérez</td></tr>
-            <tr><td><strong>Fecha y hora</strong></td><td>26/02/2026 14:30</td></tr>
-            <tr><td><strong>Cambios</strong></td><td>origen: Buenos Aires → Rosario</td></tr>
-          </tbody>
-        </table>
-      </div>
+    <!-- CAMPOS PENDIENTES ACCORDION -->
+    <div class="card">
+      <h3><span class="icon">📊</span> Campos Pendientes con Accordions</h3>
+      <p>Los indicadores de campos pendientes y completados en el Historial ahora se muestran como <strong>accordions plegables</strong>, agrupados por sección:</p>
+      <ul>
+        <li>📍 <strong>Viaje</strong> — Hora salida, Fecha llegada, Hora descarga aprox., etc.</li>
+        <li>📄 <strong>Documentación</strong> — Remito, CAI, Rubro, Factura, Rentas, DJ-722/207, Satelital</li>
+        <li>🚛 <strong>Transporte</strong> — Empresa, Contacto, Chofer, Patentes</li>
+      </ul>
+      <div class="callout callout-info">Los accordions permiten ver solo la sección que interesa sin ocupar tanto espacio en pantalla.</div>
+    </div>
 
-      <h4>Cómo usar</h4>
-      <ol>
-        <li>Ingresá a <strong>Auditoría</strong> desde el menú lateral (solo visible para administradores)</li>
-        <li>Usá los <strong>filtros</strong> para buscar por acción, entidad, usuario o fecha</li>
-        <li>Hacé clic en un registro para ver el <strong>detalle completo</strong> de los cambios</li>
-        <li>El ID del viaje es un enlace directo al detalle del transporte</li>
-      </ol>
+    <!-- MEJORAS CUPOS -->
+    <div class="card">
+      <h3><span class="icon">📅</span> Mejoras en Cupos de Descarga</h3>
+      <ul>
+        <li><strong>Botón eliminar cupo:</strong> Ahora se puede eliminar un cupo ya asignado a un viaje</li>
+        <li><strong>Rediseño de tarjetas:</strong> Las tarjetas de cupos en el calendario muestran un círculo con el ID del transporte asignado</li>
+        <li><strong>Rango ampliado a 60 días:</strong> El calendario permite seleccionar fechas hasta 60 días en el futuro (antes eran 30)</li>
+        <li><strong>Página de detalle:</strong> La sección "Descarga en Bodega" ahora aparece en el detalle del viaje</li>
+      </ul>
+    </div>
 
-      <div class="callout callout-info"><strong>Diseño amigable:</strong> Las descripciones están en español, los nombres de campos se muestran traducidos (ej: "origen" en lugar de "origin"), y cada tipo de acción tiene su propio ícono.</div>
-
-      <h4>Capturas de pantalla</h4>
-      <p style="font-size:.9rem;color:var(--gray-500);margin-bottom:.5rem;"><em>Listado de auditoría:</em></p>
-      <div class="screenshot-pair">
-        <div class="ss-desktop">
-          <img src="images/auditoria-pagina-desktop.png" alt="Auditoría — Desktop">
-          <span class="ss-label">🖥️ Desktop</span>
-        </div>
-        <div class="ss-mobile">
-          <img src="images/auditoria-pagina-mobile.png" alt="Auditoría — Móvil">
-          <span class="ss-label">📱 Móvil</span>
-        </div>
-      </div>
-
-      <p style="font-size:.9rem;color:var(--gray-500);margin-bottom:.5rem;margin-top:1rem;"><em>Detalle de un registro:</em></p>
-      <div class="screenshot-pair">
-        <div class="ss-desktop">
-          <img src="images/auditoria-detalle-desktop.png" alt="Detalle auditoría — Desktop">
-          <span class="ss-label">🖥️ Desktop</span>
-        </div>
-        <div class="ss-mobile">
-          <img src="images/auditoria-detalle-mobile.png" alt="Detalle auditoría — Móvil">
-          <span class="ss-label">📱 Móvil</span>
-        </div>
-      </div>
+    <!-- MEJORAS MOBILE -->
+    <div class="card">
+      <h3><span class="icon">📱</span> Mejoras en Dispositivos Móviles</h3>
+      <ul>
+        <li>Se corrigieron problemas de <strong>scroll tembloroso</strong> al entrar desde una notificación push</li>
+        <li>Los <strong>modales</strong> ahora bloquean el scroll del body correctamente en móviles</li>
+        <li>Las <strong>etiquetas del detalle de viaje</strong> tienen mejor legibilidad en pantallas pequeñas</li>
+      </ul>
     </div>
 
     <!-- CORRECCIONES -->
     <div class="card">
       <h3><span class="icon">🐛</span> Correcciones</h3>
       <div class="bugfix"><strong>Buscador:</strong> Se corrigió un problema donde el ícono de búsqueda se superponía al texto del placeholder.</div>
+      <div class="bugfix"><strong>Edición con descarga agendada:</strong> Se corrigió un error al editar viajes que ya tenían un cupo de descarga asignado.</div>
+      <div class="bugfix"><strong>Campos pendientes:</strong> Se corrigió que los campos pendientes persistían visualmente entre distintos viajes.</div>
     </div>
   </section>
 
@@ -864,7 +911,7 @@
 
 <footer class="site-footer">
   <p>NORPAN Logística — Control de Transporte &copy; 2026</p>
-  <p>Última actualización: 1 de marzo 2026</p>
+  <p>Última actualización: 4 de marzo 2026</p>
 </footer>
 
 </body>
